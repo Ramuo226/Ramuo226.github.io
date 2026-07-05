@@ -3,472 +3,576 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dr Oumar — Épidémiologiste &amp; Data Scientist en Santé Publique</title>
-<meta name="description" content="Épidémiologiste basé à Ouagadougou. Je transforme les données sanitaires nationales (DHIS2 / ENDOS-BF) en évidences, en formations et en décisions de santé publique.">
+<title>Dr Oumar — Épidémiologiste &amp; Analyste en Santé Publique | Ouagadougou</title>
+<meta name="description" content="J'accompagne ministères, universités et bailleurs pour transformer les données sanitaires (DHIS2 / ENDOS-BF) en évidences, en compétences locales et en décisions de santé publique.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#F6F7F3;
-  --paper-2:#EEF0EA;
-  --ink:#131F3C;
-  --indigo:#24407A;
-  --indigo-soft:#41598F;
-  --gold:#B98A2E;
-  --gold-strong:#9C7017;
-  --line:#D8DBD2;
   --white:#FFFFFF;
-  --radius:14px;
-  --max:1120px;
+  --mint:#F2F8F6;
+  --mint-2:#E6F1EE;
+  --deep:#0C3F38;          /* vert profond institutionnel */
+  --teal:#12857A;          /* action */
+  --teal-dark:#0D6B62;
+  --ink:#16302B;
+  --muted:#5B6E69;
+  --amber:#E8A33D;
+  --line:#DFEAE7;
+  --radius:20px;
+  --max:1140px;
+  --shadow:0 18px 45px -22px rgba(12,63,56,.22);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
+body{
+  font-family:'Figtree',system-ui,sans-serif;color:var(--ink);background:var(--white);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;line-height:1.12;letter-spacing:-.015em}
+a{color:var(--teal);text-decoration:none}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--teal);
+  background:var(--mint-2);border-radius:999px;padding:7px 16px;
+}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
-body{
-  font-family:'Public Sans',system-ui,sans-serif;
-  background:var(--paper);
-  color:var(--ink);
-  line-height:1.6;
-  font-size:17px;
-  -webkit-font-smoothing:antialiased;
+
+/* ---------- Nav ---------- */
+nav.site{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:700;font-size:19px;color:var(--ink)}
+.brand .mark{width:34px;height:34px;border-radius:10px;background:var(--deep);
+  display:flex;align-items:center;justify-content:center}
+.brand .mark svg{width:19px;height:19px;stroke:#8FE3D6;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.nav-links{display:flex;gap:28px;align-items:center;list-style:none}
+.nav-links a{font-size:15px;font-weight:600;color:var(--ink)}
+.nav-links a:hover{color:var(--teal)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:'Figtree',sans-serif;
+  font-weight:700;font-size:15.5px;padding:14px 26px;border-radius:999px;cursor:pointer;
+  border:1.5px solid transparent;transition:transform .18s ease, background .18s ease, box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:0 12px 28px -12px rgba(18,133,122,.6)}
+.btn-primary:hover{background:var(--teal-dark)}
+.btn-outline{border-color:var(--deep);color:var(--deep)}
+.btn-outline:hover{background:var(--deep);color:#fff}
+.btn-sm{padding:11px 20px;font-size:14.5px}
+@media(max-width:780px){.nav-links li:not(.keep){display:none}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;background:linear-gradient(180deg,var(--mint) 0%, #FFFFFF 100%);
+  padding:96px 0 64px;text-align:center;overflow:hidden}
+.dots{position:absolute;width:220px;height:220px;opacity:.55;pointer-events:none;
+  background-image:radial-gradient(var(--teal) 2.2px, transparent 2.4px);background-size:22px 22px}
+.dots.d1{top:60px;left:-40px;mask-image:radial-gradient(closest-side,#000,transparent)}
+.dots.d2{bottom:-30px;right:-30px;mask-image:radial-gradient(closest-side,#000,transparent)}
+.hero .badge-ic{width:56px;height:56px;border-radius:16px;background:var(--deep);margin:0 auto 26px;
+  display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+.hero .badge-ic svg{width:28px;height:28px;stroke:#8FE3D6;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hero h1{font-size:clamp(36px,5vw,58px);font-weight:700;max-width:19ch;margin:0 auto 22px;color:var(--deep)}
+.hero p.lead{font-size:19px;color:var(--muted);max-width:62ch;margin:0 auto 34px}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:22px}
+.hero .note{font-size:14px;color:var(--muted)}
+.hero .note b{color:var(--teal-dark)}
+
+/* Bandeau photo sous le hero */
+.hero-photo{margin-top:56px}
+.photo{
+  border-radius:var(--radius);border:1px dashed #B9CFC9;background:var(--mint-2);
+  color:#5F7C75;display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;padding:24px;line-height:1.6;
 }
-a{color:var(--indigo)}
-a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-.mono{font-family:'IBM Plex Mono',monospace}
-.eyebrow{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--gold-strong);font-weight:500;
-}
-h1,h2,h3{font-family:'Young Serif',serif;font-weight:400;line-height:1.12;letter-spacing:-0.01em}
+.photo.banner{aspect-ratio:16/6;box-shadow:var(--shadow)}
+@media(max-width:700px){.photo.banner{aspect-ratio:16/10}}
 
-/* ---- Faso dan fani woven stripe motif (signature divider) ---- */
-.weave{
-  height:10px;width:100%;
-  background:repeating-linear-gradient(90deg,
-    var(--ink) 0 34px, var(--paper) 34px 42px,
-    var(--indigo) 42px 76px, var(--paper) 76px 84px,
-    var(--gold) 84px 96px, var(--paper) 96px 104px);
-}
+/* ---------- Bandeau partenaires défilant ---------- */
+.partners{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:24px 0;overflow:hidden;position:relative}
+.partners .lbl{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;color:#8AA19B;margin-bottom:16px}
+.marquee{display:flex;width:max-content;animation:scroll 30s linear infinite}
+.partners:hover .marquee{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.marquee{animation:none;flex-wrap:wrap;width:100%;justify-content:center}}
+.marquee ul{display:flex;align-items:center;gap:0;list-style:none}
+.marquee li{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:17px;
+  color:#54706A;white-space:nowrap;padding:0 34px;display:flex;align-items:center;gap:34px}
+.marquee li::after{content:"◆";font-size:8px;color:var(--amber)}
+@keyframes scroll{to{transform:translateX(-50%)}}
 
-/* ---- Header ---- */
-header.site{
-  position:sticky;top:0;z-index:50;
-  background:rgba(246,247,243,.92);backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--line);
-}
-.nav{display:flex;align-items:center;justify-content:space-between;height:66px}
-.brand{font-family:'Young Serif',serif;font-size:19px;color:var(--ink);text-decoration:none}
-.brand span{color:var(--gold-strong)}
-.nav-links{display:flex;gap:26px;align-items:center;list-style:none}
-.nav-links a{color:var(--ink);text-decoration:none;font-size:15px;font-weight:500}
-.nav-links a:hover{color:var(--indigo)}
-.btn{
-  display:inline-block;background:var(--ink);color:var(--white);
-  padding:12px 22px;border-radius:999px;text-decoration:none;
-  font-weight:600;font-size:15px;border:1.5px solid var(--ink);
-  transition:transform .15s ease, background .15s ease;
-}
-.btn:hover{background:var(--indigo);border-color:var(--indigo);transform:translateY(-1px)}
-.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--ink)}
-.btn.gold:hover{background:var(--gold-strong);border-color:var(--gold-strong);color:var(--white)}
-.btn.ghost{background:transparent;color:var(--ink)}
-.btn.ghost:hover{background:var(--ink);color:var(--white)}
-@media(max-width:760px){.nav-links li:not(.keep){display:none}}
+/* ---------- Carte d'identité professionnelle ---------- */
+.idcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden}
+.id-head{background:var(--deep);color:#fff;padding:22px 34px;display:flex;
+  justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.id-head h3{font-size:19px;font-weight:700}
+.id-head span{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8FE3D6;
+  letter-spacing:.12em;text-transform:uppercase}
+.id-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+@media(max-width:820px){.id-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.id-grid{grid-template-columns:1fr}}
+.id-item{padding:24px 34px;border-top:1px solid var(--line)}
+.id-item dt{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:#8AA19B;margin-bottom:6px}
+.id-item dd{font-size:15.5px;font-weight:600;color:var(--ink)}
+.id-item dd a{color:var(--teal)}
 
-/* ---- Hero ---- */
-.hero{padding:76px 0 0}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}}
-.hero h1{font-size:clamp(34px,4.6vw,54px);margin:18px 0 22px}
-.hero h1 em{font-style:normal;color:var(--indigo);
-  background:linear-gradient(transparent 68%, rgba(185,138,46,.28) 68%)}
-.hero p.lead{font-size:19px;color:#37415F;max-width:56ch;margin-bottom:30px}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
-.hero-note{font-size:14px;color:#5A6178;display:flex;align-items:center;gap:8px}
-.dot{width:9px;height:9px;border-radius:50%;background:#2E8B57;display:inline-block;
-  box-shadow:0 0 0 0 rgba(46,139,87,.5);animation:pulse 2.2s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(46,139,87,0)}100%{box-shadow:0 0 0 0 rgba(46,139,87,0)}}
+/* ---------- Ce que je fais (alternance) ---------- */
+.section{padding:100px 0}
+.sec-head{max-width:760px;margin:0 auto 64px;text-align:center}
+.sec-head h2{font-size:clamp(30px,3.6vw,44px);font-weight:700;color:var(--deep);margin-top:18px}
+.sec-head p{margin-top:16px;color:var(--muted);font-size:17.5px}
+.rows{display:grid;gap:84px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.row:nth-child(even) .media{order:2}
+@media(max-width:860px){.row{grid-template-columns:1fr;gap:28px}.row:nth-child(even) .media{order:0}}
+.row .media .photo{aspect-ratio:4/3;box-shadow:var(--shadow)}
+.row h3{font-size:26px;font-weight:700;color:var(--deep);margin:14px 0 14px}
+.row p{color:var(--muted);font-size:16.5px}
+.row p+p{margin-top:10px}
+.stack{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:500;
+  background:var(--mint-2);color:var(--teal-dark);border-radius:999px;padding:6px 13px}
+.more{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-weight:700;color:var(--teal)}
+.more::after{content:"→";transition:transform .18s}
+.more:hover::after{transform:translateX(4px)}
 
-/* Surveillance chart card */
-.chart-card{
-  background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
-  padding:22px 22px 14px;box-shadow:0 18px 45px -22px rgba(19,31,60,.28);
-}
-.chart-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;gap:10px}
-.chart-title{font-size:13px;font-weight:600;letter-spacing:.02em}
-.chart-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold-strong)}
-.chart-sub{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7A809A;margin-bottom:8px}
-#epicurve path.line{stroke:var(--indigo);stroke-width:2.4;fill:none;
-  stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.6s .4s ease forwards}
-#epicurve path.band{fill:rgba(36,64,122,.10)}
-#epicurve .thr{stroke:var(--gold);stroke-width:1.6;stroke-dasharray:5 6}
-#epicurve text{font-family:'IBM Plex Mono',monospace;font-size:9.5px;fill:#7A809A}
-@keyframes draw{to{stroke-dashoffset:0}}
-@media (prefers-reduced-motion:reduce){#epicurve path.line{stroke-dashoffset:0}}
-.chart-foot{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#9AA0B4;margin-top:8px}
+/* ---------- Bandeau chiffres ---------- */
+.impact{background:var(--deep);color:#fff;padding:84px 0;position:relative;overflow:hidden}
+.impact .dots{opacity:.25;background-image:radial-gradient(#8FE3D6 2.2px, transparent 2.4px)}
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center;position:relative}
+@media(max-width:820px){.impact-grid{grid-template-columns:repeat(2,1fr)}}
+.impact b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+  font-size:clamp(38px,4.4vw,56px);color:#8FE3D6;line-height:1}
+.impact span{display:block;margin-top:12px;font-size:14.5px;color:#C4DCD6;max-width:26ch;margin-left:auto;margin-right:auto}
+.impact .src{text-align:center;margin-top:44px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7FA8A0}
 
-/* Trust strip */
-.trust{margin-top:64px;border-top:1px solid var(--line);padding:26px 0 30px}
-.trust .label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7A809A;
-  font-family:'IBM Plex Mono',monospace;margin-bottom:14px}
-.trust-row{display:flex;gap:14px 42px;flex-wrap:wrap;align-items:center}
-.trust-row span{font-weight:600;font-size:15.5px;color:#3A4666}
+/* ---------- Témoignage ---------- */
+.quote{background:var(--mint);padding:100px 0}
+.quote-box{max-width:820px;margin:0 auto;text-align:center}
+.quote-mark{font-family:'Bricolage Grotesque',sans-serif;font-size:80px;line-height:.5;color:var(--amber)}
+.quote blockquote{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(20px,2.6vw,27px);
+  font-weight:600;color:var(--deep);line-height:1.4;margin:26px 0 30px}
+.quote .who{display:flex;align-items:center;justify-content:center;gap:14px}
+.quote .avatar{width:52px;height:52px;border-radius:50%;background:var(--mint-2);border:1px dashed #B9CFC9;
+  display:flex;align-items:center;justify-content:center;font-size:11px;color:#5F7C75;
+  font-family:'IBM Plex Mono',monospace}
+.quote .who div{text-align:left}
+.quote .who b{display:block;font-size:15.5px;color:var(--ink)}
+.quote .who span{font-size:13.5px;color:var(--muted)}
 
-/* ---- Sections ---- */
-section{padding:88px 0}
-.sec-head{max-width:680px;margin-bottom:52px}
-.sec-head h2{font-size:clamp(28px,3.4vw,40px);margin-top:14px}
-.sec-head p{margin-top:14px;color:#37415F}
+/* ---------- FAQ ---------- */
+.faq{max-width:820px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+  gap:20px;padding:24px 4px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;
+  font-size:18px;color:var(--deep)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:26px;color:var(--teal);flex:0 0 auto;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 4px 24px;color:var(--muted);font-size:16px;max-width:70ch}
 
-/* ---- Case studies ---- */
-.cases{display:flex;flex-direction:column;gap:26px}
-.case{
-  background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
-  padding:38px;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;
-  transition:box-shadow .2s ease, transform .2s ease;
-}
-.case:hover{box-shadow:0 22px 55px -28px rgba(19,31,60,.35);transform:translateY(-2px)}
-@media(max-width:820px){.case{grid-template-columns:1fr;padding:28px;gap:26px}}
-.case .kind{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--gold-strong);margin-bottom:12px}
-.case h3{font-size:25px;margin-bottom:14px}
-.case p{color:#37415F;font-size:16px}
-.case p + p{margin-top:10px}
-.case .stack{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-family:'IBM Plex Mono',monospace;font-size:11.5px;background:var(--paper-2);
-  border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:#3A4666}
-.outcomes{border-left:2px solid var(--gold);padding-left:22px;align-self:center}
-.outcomes .o-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;
-  text-transform:uppercase;color:#7A809A;margin-bottom:14px}
-.outcome{margin-bottom:16px}
-.outcome b{font-family:'Young Serif',serif;font-weight:400;font-size:26px;display:block;color:var(--indigo)}
-.outcome span{font-size:13.5px;color:#5A6178}
-
-/* ---- Services ---- */
-.services{background:var(--ink);color:var(--paper)}
-.services .eyebrow{color:var(--gold)}
-.services h2{color:var(--white)}
-.services .sec-head p{color:#B9C0D4}
-.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-@media(max-width:820px){.svc-grid{grid-template-columns:1fr}}
-.svc{border:1px solid rgba(255,255,255,.16);border-radius:var(--radius);padding:28px;
-  background:rgba(255,255,255,.03)}
-.svc h3{font-size:20px;color:var(--white);margin-bottom:10px}
-.svc p{color:#B9C0D4;font-size:15.5px}
-.svc .mono{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:12px}
-
-/* ---- About ---- */
-.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
-@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
-.portrait{
-  aspect-ratio:4/4.6;border-radius:var(--radius);border:1px solid var(--line);
-  background:
-    linear-gradient(160deg, rgba(36,64,122,.14), rgba(185,138,46,.12)),
-    repeating-linear-gradient(90deg, rgba(19,31,60,.06) 0 26px, transparent 26px 32px),
-    var(--paper-2);
-  display:flex;align-items:center;justify-content:center;
-  color:#7A809A;font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-align:center;padding:20px;
-}
-.about h2{font-size:clamp(26px,3vw,36px);margin:14px 0 20px}
-.about p{color:#37415F;margin-bottom:14px}
-.creds{margin-top:26px;display:grid;gap:12px}
-.cred{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:#2C3654}
-.cred::before{content:"✓";color:var(--gold-strong);font-weight:700;margin-top:1px}
-
-/* ---- Process + CTA ---- */
-.contact{background:var(--white);border-top:1px solid var(--line)}
-.contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:start}
+/* ---------- Contact ---------- */
+.contact{background:linear-gradient(180deg,#FFFFFF, var(--mint))}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 @media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
-.contact h2{font-size:clamp(28px,3.4vw,42px);margin:14px 0 18px}
-.contact p.lead{color:#37415F;font-size:18px;margin-bottom:26px}
-.steps{margin:6px 0 30px;display:grid;gap:18px}
-.step{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
-.step .n{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--gold);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Young Serif',serif;color:var(--gold-strong);font-size:18px;background:var(--paper)}
-.step h4{font-size:16px;margin-bottom:3px}
-.step p{font-size:14.5px;color:#5A6178}
-.contact-card{
-  background:var(--ink);color:var(--paper);border-radius:var(--radius);
-  padding:36px;box-shadow:0 24px 60px -28px rgba(19,31,60,.5)}
-.contact-card h3{color:var(--white);font-size:23px;margin-bottom:10px}
-.contact-card p{color:#B9C0D4;font-size:15.5px;margin-bottom:22px}
-.contact-card .btn{width:100%;text-align:center;margin-bottom:12px}
-.contact-card .alt{display:block;text-align:center;font-size:14px;color:#B9C0D4;margin-top:14px}
-.contact-card .alt a{color:var(--gold)}
-.guarantee{display:flex;gap:10px;align-items:center;margin-top:20px;padding-top:20px;
-  border-top:1px solid rgba(255,255,255,.15);font-size:13.5px;color:#B9C0D4}
+.contact h2{font-size:clamp(30px,3.6vw,44px);font-weight:700;color:var(--deep);margin:16px 0 18px}
+.contact p.lead{color:var(--muted);font-size:17.5px;margin-bottom:28px}
+.contact .photo{aspect-ratio:4/3;margin-bottom:26px}
+.mini-steps{display:grid;gap:10px;font-size:15px;color:var(--muted)}
+.mini-steps div{display:flex;gap:10px}
+.mini-steps b{color:var(--teal-dark);font-family:'IBM Plex Mono',monospace;font-weight:500}
+form.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:34px;box-shadow:var(--shadow)}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13.5px;font-weight:700;margin-bottom:6px;color:var(--deep)}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;
+  font-family:'Figtree',sans-serif;font-size:15.5px;color:var(--ink);background:#fff;
+  transition:border-color .15s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--teal)}
+.field textarea{min-height:120px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.two{grid-template-columns:1fr}}
+form .btn{width:100%;justify-content:center;margin-top:6px}
+.or-mail{text-align:center;margin-top:16px;font-size:14px;color:var(--muted)}
 
-footer{padding:34px 0;font-size:13.5px;color:#7A809A}
-.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+/* ---------- Footer ---------- */
+footer{background:var(--deep);color:#C4DCD6;padding:64px 0 36px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+@media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr}}
+.foot-brand{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:12px}
+.foot p{font-size:14.5px;max-width:34ch}
+.foot h4{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#8FE3D6;
+  font-family:'IBM Plex Mono',monospace;font-weight:500;margin-bottom:16px}
+.foot ul{list-style:none;display:grid;gap:10px}
+.foot ul a{color:#C4DCD6;font-size:15px}
+.foot ul a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.14);padding-top:26px;display:flex;
+  justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13.5px;color:#7FA8A0}
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="wrap nav">
-    <a class="brand" href="#top">Dr&nbsp;Oumar<span>.</span></a>
+<nav class="site">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <span class="mark"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span>
+      Dr&nbsp;Oumar
+    </a>
     <ul class="nav-links">
-      <li><a href="#projets">Études de cas</a></li>
-      <li><a href="#services">Prestations</a></li>
-      <li><a href="#apropos">À propos</a></li>
-      <li class="keep"><a class="btn gold" href="#contact">Discuter d'un projet</a></li>
+      <li><a href="#travail">Ce que je fais</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li class="keep"><a class="btn btn-primary btn-sm" href="#contact">Me contacter</a></li>
     </ul>
   </div>
-</header>
+</nav>
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow">Épidémiologiste · Data Scientist Santé · Ouagadougou, Burkina Faso</span>
-        <h1>Des données sanitaires aux <em>décisions qui sauvent des vies</em>.</h1>
-        <p class="lead">
-          J'accompagne ministères, universités et bailleurs internationaux pour transformer
-          les données de routine (DHIS2 / ENDOS-BF) en évidences rigoureuses, en équipes
-          formées et en politiques de santé mesurables — du paludisme à la mortalité
-          maternelle et infantile.
-        </p>
-        <div class="hero-ctas">
-          <a class="btn gold" href="#contact">Planifier un échange de 30 min</a>
-          <a class="btn ghost" href="#projets">Voir les études de cas</a>
-        </div>
-        <p class="hero-note"><span class="dot" aria-hidden="true"></span> Disponible pour missions de conseil, formations et évaluations — réponse sous 48&nbsp;h.</p>
-      </div>
-
-      <div class="chart-card" aria-label="Exemple de courbe de surveillance épidémiologique">
-        <div class="chart-head">
-          <span class="chart-title">Surveillance hebdomadaire — cas suspects de paludisme</span>
-          <span class="chart-tag">ggplot2 · R</span>
-        </div>
-        <p class="chart-sub">source: ENDOS-BF (DHIS2) · district sanitaire · 2025-W01 → W52</p>
-        <svg id="epicurve" viewBox="0 0 520 240" role="img" aria-label="Courbe épidémique annuelle avec pic saisonnier et seuil d'alerte">
-          <line x1="40" y1="200" x2="505" y2="200" stroke="#D8DBD2"/>
-          <line x1="40" y1="20" x2="40" y2="200" stroke="#D8DBD2"/>
-          <line class="thr" x1="40" y1="86" x2="505" y2="86"/>
-          <text x="446" y="80">seuil d'alerte</text>
-          <text x="14" y="204">0</text><text x="8" y="126">2k</text><text x="8" y="48">4k</text>
-          <text x="48" y="216">W01</text><text x="160" y="216">W13</text>
-          <text x="272" y="216">W26</text><text x="384" y="216">W39</text><text x="480" y="216">W52</text>
-          <path class="band" d="M40,186 C90,182 130,178 170,168 C210,158 240,140 280,104 C310,78 330,60 360,58 C390,56 420,92 450,136 C475,168 495,180 505,184
-                               L505,196 C495,192 475,182 450,158 C420,120 390,86 360,84 C330,86 310,100 280,128 C240,160 210,174 170,184 C130,192 90,194 40,196 Z"/>
-          <path class="line" d="M40,191 C90,187 130,185 170,176 C210,167 240,150 280,116 C310,89 330,71 360,71 C390,71 420,104 450,147 C475,174 495,186 505,190"/>
-        </svg>
-        <p class="chart-foot">fig. 1 — pic saisonnier détecté 6 semaines avant le seuil historique → pré-positionnement des intrants</p>
-      </div>
-    </div>
-
-    <div class="wrap trust">
-      <p class="label">Ils m'ont fait confiance</p>
-      <div class="trust-row">
-        <span>Fondation Gates</span>
-        <span>Northwestern University</span>
-        <span>Ministère de la Santé — DGESS (Burkina Faso)</span>
-        <span>ENDOS-BF / DHIS2</span>
-      </div>
-    </div>
-  </section>
-
-  <div class="weave" aria-hidden="true"></div>
-
-  <!-- CASE STUDIES -->
-  <section id="projets">
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="dots d1" aria-hidden="true"></div>
+    <div class="dots d2" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Études de cas</span>
-        <h2>Un travail livré comme une prestation, mesuré comme une intervention.</h2>
-        <p>Chaque mission suit la même exigence : un contexte précis, une méthode reproductible, des résultats vérifiables. Voici trois exemples récents.</p>
+      <div class="badge-ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+      </div>
+      <h1>Des données de santé plus fortes, pour des décisions plus justes.</h1>
+      <p class="lead">
+        Épidémiologiste et analyste en santé publique basé à Ouagadougou, j'accompagne les
+        ministères, universités et bailleurs internationaux sur le chemin de l'autonomie :
+        analyses rigoureuses des données nationales (DHIS2 / ENDOS-BF), renforcement des
+        compétences locales et traduction de l'évidence en politiques.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Commencer une conversation</a>
+        <a class="btn btn-outline" href="#travail">Découvrir mon travail</a>
+      </div>
+      <p class="note">Missions au Burkina Faso et à l'international · <b>Réponse sous 48 h</b> · Français / Anglais</p>
+
+      <div class="hero-photo rv">
+        <div class="photo banner">
+          [ PHOTO À INSÉRER — la plus importante du site :<br>
+          vous, en train d'animer une formation avec les chercheurs du ministère<br>
+          (écran avec du code R ou un graphique visible, participants engagés) ]
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ PARTENAIRES (bandeau défilant) ============ -->
+  <div class="partners" aria-label="Institutions partenaires">
+    <p class="lbl">Ils m'ont fait confiance</p>
+    <div class="marquee">
+      <ul>
+        <li>Fondation Gates</li>
+        <li>Northwestern University</li>
+        <li>Ministère de la Santé — DGESS (Burkina Faso)</li>
+        <li>ENDOS-BF / DHIS2</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>Fondation Gates</li>
+        <li>Northwestern University</li>
+        <li>Ministère de la Santé — DGESS (Burkina Faso)</li>
+        <li>ENDOS-BF / DHIS2</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>Fondation Gates</li>
+        <li>Northwestern University</li>
+        <li>Ministère de la Santé — DGESS (Burkina Faso)</li>
+        <li>ENDOS-BF / DHIS2</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>Fondation Gates</li>
+        <li>Northwestern University</li>
+        <li>Ministère de la Santé — DGESS (Burkina Faso)</li>
+        <li>ENDOS-BF / DHIS2</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ CE QUE JE FAIS ============ -->
+  <section class="section" id="travail">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Ce que je fais</span>
+        <h2>Quatre leviers pour un système de santé autonome dans l'usage de ses données.</h2>
+        <p>Chaque mission suit la même exigence : un contexte précis, une méthode reproductible, des résultats vérifiables.</p>
       </div>
 
-      <div class="cases">
+      <div class="rows">
 
-        <article class="case">
+        <div class="row rv">
+          <div class="media"><div class="photo">[ PHOTO : séance de travail sur des tableaux<br>de bord / graphiques ggplot2 à l'écran ]</div></div>
           <div>
-            <p class="kind">Recherche &amp; évidence · Bailleur international</p>
-            <h3>Renforcer l'évidence sur la performance du système de santé national</h3>
-            <p>Direction scientifique d'un projet financé par la Fondation Gates, en partenariat avec Northwestern University et la DGESS du Ministère de la Santé : production d'analyses rigoureuses à partir des données nationales de routine pour éclairer les décisions sur le paludisme, la tuberculose et la santé maternelle et infantile.</p>
-            <p>Mon rôle : conception méthodologique, pilotage des analyses, interface directe avec le bailleur (revues mensuelles) et les décideurs du ministère.</p>
+            <span class="eyebrow">Analyser pour l'impact</span>
+            <h3>Transformer les données de routine en évidences pour la décision</h3>
+            <p>Direction scientifique d'un projet financé par la Fondation Gates, en partenariat avec Northwestern University et la DGESS du Ministère de la Santé : analyses rigoureuses des données nationales pour éclairer les décisions sur le paludisme, la tuberculose et la santé maternelle et infantile.</p>
             <div class="stack">
-              <span class="chip">R</span><span class="chip">DHIS2 / ENDOS-BF</span>
-              <span class="chip">analyses reproductibles</span><span class="chip">policy briefs</span>
+              <span class="chip">R / ggplot2</span><span class="chip">DHIS2 / ENDOS-BF</span>
+              <span class="chip">policy briefs</span><span class="chip">revues mensuelles bailleur</span>
             </div>
+            <a class="more" href="#contact">Discuter d'une analyse</a>
           </div>
-          <div class="outcomes">
-            <p class="o-label">Résultats</p>
-            <div class="outcome"><b>National</b><span>portée : données de routine de l'ensemble des districts sanitaires</span></div>
-            <div class="outcome"><b>3 priorités</b><span>paludisme, tuberculose, mortalité maternelle &amp; infantile</span></div>
-            <div class="outcome"><b>Mensuel</b><span>dialogue direct et continu avec le bailleur et le ministère</span></div>
-          </div>
-        </article>
+        </div>
 
-        <article class="case">
+        <div class="row rv">
+          <div class="media"><div class="photo">[ PHOTO : votre cohorte de formation —<br>participants devant leurs ordinateurs, vous au tableau ]</div></div>
           <div>
-            <p class="kind">Formation &amp; transfert de compétences · Ministère de la Santé</p>
-            <h3>Former les analystes du ministère à transformer la donnée en politique</h3>
-            <p>Conception et animation d'un programme de formation en R et analyse de données pour 15 chercheurs et cadres, bâti sur les vraies données nationales — pas des jeux de données fictifs. Chaque session se termine par une analyse directement utilisable par les équipes.</p>
-            <p>Les participants sont positionnés comme futurs tuteurs : le programme installe une capacité durable au sein de l'institution, au lieu d'une dépendance à l'assistance technique externe.</p>
+            <span class="eyebrow">Renforcer l'autonomie</span>
+            <h3>Former les analystes qui formeront les suivants</h3>
+            <p>Programme de formation en R et analyse de données pour 15 chercheurs et cadres du ministère, bâti sur les vraies données nationales — pas des jeux fictifs. Progression mesurée par tests pré/post à chaque session.</p>
+            <p>Les participants deviennent tuteurs des cohortes suivantes : la compétence s'installe dans l'institution, au lieu d'une dépendance durable à l'assistance technique externe.</p>
             <div class="stack">
-              <span class="chip">R / tidyverse</span><span class="chip">pédagogie par les données réelles</span>
-              <span class="chip">évaluation pré/post</span><span class="chip">modèle apprenant → tuteur → formateur</span>
+              <span class="chip">15 chercheurs</span><span class="chip">évaluation pré/post</span>
+              <span class="chip">apprenant → tuteur → formateur</span>
             </div>
+            <a class="more" href="#contact">Discuter d'une formation</a>
           </div>
-          <div class="outcomes">
-            <p class="o-label">Résultats</p>
-            <div class="outcome"><b>15</b><span>chercheurs et cadres en cours de certification</span></div>
-            <div class="outcome"><b>+ forte</b><span>progression mesurée aux tests pré/post à chaque session</span></div>
-            <div class="outcome"><b>Durable</b><span>noyau de tuteurs internes pour les prochaines cohortes</span></div>
-          </div>
-        </article>
+        </div>
 
-        <article class="case">
+        <div class="row rv">
+          <div class="media"><div class="photo">[ CAPTURE D'ÉCRAN : votre module WebR —<br>code R + graphique dans le navigateur ]</div></div>
           <div>
-            <p class="kind">Produit &amp; innovation · e-learning</p>
+            <span class="eyebrow">Innover</span>
             <h3>Une plateforme d'e-learning en français, sur données sanitaires réelles</h3>
-            <p>Conception d'une plateforme de formation en ligne à l'analyse des données de santé : modules interactifs où R s'exécute directement dans le navigateur (WebR) — aucune installation requise — sur de vrais exports DHIS2 (paludisme, positivité des tests, tendances par district).</p>
-            <p>La plateforme constitue la couche « capacités humaines » du futur centre national d'intelligence sanitaire : chaque module produit des analystes immédiatement opérationnels sur les données du pays.</p>
+            <p>Conception d'une plateforme de formation en ligne où R s'exécute directement dans le navigateur (WebR) — aucune installation, accessible même à faible bande passante — sur de vrais exports DHIS2 : paludisme, positivité des tests, tendances par district.</p>
+            <p>Cette plateforme constitue la couche « capacités humaines » du futur centre national d'intelligence sanitaire.</p>
             <div class="stack">
-              <span class="chip">WebR</span><span class="chip">Quarto</span><span class="chip">Moodle</span>
-              <span class="chip">ggplot2</span><span class="chip">100 % en français</span>
+              <span class="chip">WebR</span><span class="chip">Quarto</span><span class="chip">Moodle</span><span class="chip">100 % en français</span>
             </div>
+            <a class="more" href="#contact">Voir une démonstration</a>
           </div>
-          <div class="outcomes">
-            <p class="o-label">Résultats</p>
-            <div class="outcome"><b>0 install.</b><span>R dans le navigateur : accessible partout, même à faible bande passante</span></div>
-            <div class="outcome"><b>5 compétences</b><span>par module : de l'export brut DHIS2 à la visualisation décisionnelle</span></div>
-            <div class="outcome"><b>Prototype</b><span>module interactif complet + catalogue + dossier de financement</span></div>
+        </div>
+
+        <div class="row rv">
+          <div class="media"><div class="photo">[ PHOTO : réunion avec des décideurs /<br>atelier de restitution au ministère ]</div></div>
+          <div>
+            <span class="eyebrow">Traduire en politiques</span>
+            <h3>De l'évidence au financement : notes de politique et propositions</h3>
+            <p>Rédaction scientifique, concept notes et dossiers bailleurs cadrés sur les résultats de santé — avec les données pour les étayer. Habitué au dialogue direct avec les bailleurs internationaux et les directions du ministère.</p>
+            <div class="stack">
+              <span class="chip">concept notes</span><span class="chip">Fondation Gates</span><span class="chip">feuilles de route nationales</span>
+            </div>
+            <a class="more" href="#contact">Discuter d'une proposition</a>
           </div>
-        </article>
+        </div>
 
       </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
+  <!-- ============ CHIFFRES ============ -->
+  <section class="impact" id="impact">
+    <div class="dots d1" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Prestations</span>
-        <h2>Quatre façons de travailler ensemble.</h2>
-        <p>Des missions cadrées, avec des livrables définis dès le départ et un interlocuteur unique du début à la fin.</p>
+      <div class="impact-grid rv">
+        <div><b data-count="15">0</b><span>chercheurs et cadres du ministère formés en R et analyse de données</span></div>
+        <div><b data-count="3">0</b><span>priorités de santé : paludisme, tuberculose, santé maternelle &amp; infantile</span></div>
+        <div><b><span data-count="100">0</span>%</b><span>d'analyses reproductibles, sur données nationales réelles</span></div>
+        <div><b><span data-count="48">0</span>h</b><span>délai de réponse garanti à toute demande de collaboration</span></div>
       </div>
-      <div class="svc-grid">
-        <div class="svc">
-          <span class="mono">01 · Analyse</span>
-          <h3>Analyse épidémiologique &amp; DHIS2</h3>
-          <p>Nettoyage, analyse et visualisation de données de routine ou d'enquêtes : indicateurs de performance, tendances, détection de signaux, rapports prêts pour la décision.</p>
-        </div>
-        <div class="svc">
-          <span class="mono">02 · Formation</span>
-          <h3>Formations R sur vos propres données</h3>
-          <p>Programmes sur mesure pour vos équipes, du niveau débutant à avancé, évalués par tests pré/post — avec un plan de tutorat interne pour que la compétence reste chez vous.</p>
-        </div>
-        <div class="svc">
-          <span class="mono">03 · Évidence</span>
-          <h3>Notes de politique &amp; propositions de financement</h3>
-          <p>Rédaction scientifique, concept notes et dossiers bailleurs (Gates, agences onusiennes…) cadrés sur les résultats de santé, avec les données pour les étayer.</p>
-        </div>
-        <div class="svc">
-          <span class="mono">04 · Produit</span>
-          <h3>Plateformes de formation &amp; tableaux de bord</h3>
-          <p>Conception de dispositifs e-learning (WebR, Quarto, Moodle) et de bibliothèques d'analyses reproductibles adossés à vos systèmes d'information sanitaire.</p>
-        </div>
+      <p class="src">Sources : évaluations pré/post des formations · ENDOS-BF / DHIS2, Ministère de la Santé du Burkina Faso</p>
+    </div>
+  </section>
+
+  <!-- ============ TÉMOIGNAGE ============ -->
+  <section class="quote">
+    <div class="wrap quote-box rv">
+      <div class="quote-mark" aria-hidden="true">“</div>
+      <blockquote>
+        [ Emplacement pour un témoignage réel — demandez une ou deux phrases à un
+        partenaire : un cadre de la DGESS, un participant à la formation, ou un
+        collègue de Northwestern. Un vrai témoignage nommé vaut mieux que dix
+        paragraphes de présentation. ]
+      </blockquote>
+      <div class="who">
+        <div class="avatar">photo</div>
+        <div><b>Nom du partenaire</b><span>Fonction, Institution</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="apropos">
-    <div class="wrap about-grid">
-      <div class="portrait">
-        [ Votre photo professionnelle ici —<br>portrait sobre, fond neutre, regard caméra ]
-      </div>
-      <div class="about">
-        <span class="eyebrow">À propos</span>
-        <h2>La rigueur d'un chercheur. Le pragmatisme d'un partenaire de terrain.</h2>
-        <p>
-          Je suis épidémiologiste et data scientist en santé publique, basé à Ouagadougou.
-          Depuis plusieurs années, je travaille à l'interface exacte où les données deviennent
-          des décisions : entre les systèmes d'information sanitaire nationaux, les équipes
-          du ministère et les bailleurs internationaux.
-        </p>
-        <p>
-          Ma conviction : les pays disposent déjà de données extraordinaires. Ce qui manque,
-          ce sont les analyses reproductibles et les compétences locales pour les exploiter.
-          C'est précisément ce que je construis — et ce que je transfère.
-        </p>
-        <div class="creds">
-          <div class="cred">Chercheur principal sur un projet financé par la Fondation Gates (performance du système de santé)</div>
-          <div class="cred">Partenariats institutionnels : Northwestern University, DGESS / Ministère de la Santé</div>
-          <div class="cred">Spécialiste des données de routine DHIS2 / ENDOS-BF et de l'écosystème R</div>
-          <div class="cred">Formateur : programmes évalués, orientés vers l'autonomie durable des équipes</div>
-          <div class="cred">Travail en français et en anglais, habitué au dialogue direct avec les bailleurs</div>
+  <!-- ============ CARTE D'IDENTITÉ ============ -->
+  <section class="section" id="identite" style="padding-top:90px;padding-bottom:0">
+    <div class="wrap">
+      <div class="idcard rv">
+        <div class="id-head">
+          <h3>Carte d'identité professionnelle</h3>
+          <span>Vérifiable · Transparent</span>
         </div>
+        <dl class="id-grid">
+          <div class="id-item"><dt>Nom</dt><dd>Dr Oumar [Nom complet]</dd></div>
+          <div class="id-item"><dt>Fonction</dt><dd>Épidémiologiste · Analyste en santé publique</dd></div>
+          <div class="id-item"><dt>Base</dt><dd>Ouagadougou, Burkina Faso</dd></div>
+          <div class="id-item"><dt>Zones d'intervention</dt><dd>Burkina Faso · Afrique de l'Ouest · À distance (international)</dd></div>
+          <div class="id-item"><dt>Langues de travail</dt><dd>Français · Anglais</dd></div>
+          <div class="id-item"><dt>Partenariats en cours</dt><dd>Fondation Gates · Northwestern University · DGESS / Ministère de la Santé</dd></div>
+          <div class="id-item"><dt>Outils &amp; méthodes</dt><dd>R / tidyverse · DHIS2 / ENDOS-BF · WebR · Quarto</dd></div>
+          <div class="id-item"><dt>Contact</dt><dd><a href="mailto:votre.email@exemple.org">votre.email@exemple.org</a></dd></div>
+          <div class="id-item"><dt>Délai de réponse</dt><dd>Sous 48 h ouvrées</dd></div>
+        </dl>
       </div>
     </div>
   </section>
 
-  <div class="weave" aria-hidden="true"></div>
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Questions fréquentes</span>
+        <h2>Comment nous pourrions travailler ensemble.</h2>
+      </div>
+      <div class="faq rv">
+        <details open>
+          <summary>Quels types de missions acceptez-vous ?</summary>
+          <p>Quatre grands formats : analyses épidémiologiques et de données de routine (DHIS2), formations R sur mesure pour vos équipes, conception de dispositifs e-learning et de tableaux de bord, et appui à la rédaction de notes de politique ou de propositions de financement. Les missions courtes (quelques jours) comme les accompagnements de plusieurs mois sont possibles.</p>
+        </details>
+        <details>
+          <summary>Travaillez-vous à distance ou sur site ?</summary>
+          <p>Les deux. Je suis basé à Ouagadougou et me déplace au Burkina Faso et à l'international ; une grande partie des analyses et des formations peut aussi se mener entièrement à distance, avec des outils adaptés aux contextes à faible bande passante.</p>
+        </details>
+        <details>
+          <summary>En quelles langues travaillez-vous ?</summary>
+          <p>En français et en anglais — analyses, formations, rapports et échanges avec les bailleurs dans les deux langues.</p>
+        </details>
+        <details>
+          <summary>Comment se passe le démarrage d'une collaboration ?</summary>
+          <p>Simplement : vous m'écrivez deux lignes sur votre organisation et le problème à résoudre. Nous échangeons 30 minutes sous 48 h. Vous recevez ensuite une proposition cadrée — objectifs, livrables, calendrier, budget — sous 5 jours ouvrés. Vous décidez librement ensuite.</p>
+        </details>
+        <details>
+          <summary>Vos analyses sont-elles réutilisables par nos équipes ?</summary>
+          <p>Oui, et c'est un principe central : chaque analyse est livrée sous forme reproductible (code R documenté), pour que vos équipes puissent la relancer, l'adapter et se l'approprier. Le transfert de compétences fait partie de la prestation, pas d'un supplément.</p>
+        </details>
+      </div>
+    </div>
+  </section>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact" id="contact">
     <div class="wrap contact-grid">
-      <div>
-        <span class="eyebrow">Travaillons ensemble</span>
-        <h2>Un projet de données de santé&nbsp;? Parlons-en cette semaine.</h2>
+      <div class="rv">
+        <span class="eyebrow">Parlons-en</span>
+        <h2>Commencez la conversation aujourd'hui.</h2>
         <p class="lead">
-          Pas de formulaire interminable, pas d'engagement : un échange de 30 minutes pour
-          comprendre votre besoin et vous dire honnêtement si — et comment — je peux vous aider.
+          Vous avez une idée, un besoin d'analyse, une équipe à former ? Écrivez-moi —
+          deux lignes suffisent pour démarrer.
         </p>
-        <div class="steps">
-          <div class="step">
-            <div class="n">1</div>
-            <div><h4>Vous m'écrivez</h4><p>Deux lignes suffisent : votre organisation et le problème à résoudre.</p></div>
-          </div>
-          <div class="step">
-            <div class="n">2</div>
-            <div><h4>Nous échangeons 30 minutes</h4><p>Visio ou téléphone, sous 48 h. Je repars avec une compréhension claire de votre contexte.</p></div>
-          </div>
-          <div class="step">
-            <div class="n">3</div>
-            <div><h4>Vous recevez une proposition cadrée</h4><p>Objectifs, livrables, calendrier et budget — sous 5 jours ouvrés. Vous décidez ensuite.</p></div>
-          </div>
+        <div class="photo">[ PHOTO : vous en discussion avec un partenaire,<br>autour d'un document ou d'un écran ]</div>
+        <div class="mini-steps">
+          <div><b>01</b> Vous décrivez votre besoin en quelques lignes</div>
+          <div><b>02</b> Nous échangeons 30 minutes, sous 48 h</div>
+          <div><b>03</b> Vous recevez une proposition cadrée sous 5 jours ouvrés</div>
         </div>
       </div>
 
-      <div class="contact-card">
-        <h3>Prendre contact</h3>
-        <p>Missions de conseil, formations, évaluations, co-écriture de propositions — au Burkina Faso et à l'international.</p>
-        <a class="btn gold" href="mailto:votre.email@exemple.org?subject=Projet%20de%20collaboration%20—%20données%20de%20santé">✉ &nbsp;Écrire un e-mail</a>
-        <a class="btn ghost" style="color:#fff;border-color:rgba(255,255,255,.4)" href="#" aria-label="Lien vers un agenda de prise de rendez-vous, à remplacer">📅 &nbsp;Réserver un créneau (Calendly)</a>
-        <span class="alt">Ou sur <a href="#">LinkedIn</a> · <a href="#">ORCID</a> · <a href="#">GitHub</a></span>
-        <div class="guarantee">
-          <span class="dot" aria-hidden="true"></span>
-          Réponse garantie sous 48 h ouvrées — en français ou en anglais.
+      <form class="card rv" action="https://formspree.io/f/VOTRE_ID" method="POST">
+        <div class="two">
+          <div class="field"><label for="f-nom">Nom</label><input id="f-nom" name="nom" type="text" required></div>
+          <div class="field"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" required></div>
         </div>
-      </div>
+        <div class="two">
+          <div class="field"><label for="f-org">Organisation</label><input id="f-org" name="organisation" type="text"></div>
+          <div class="field"><label for="f-pays">Pays</label><input id="f-pays" name="pays" type="text"></div>
+        </div>
+        <div class="field">
+          <label for="f-sujet">Sujet</label>
+          <select id="f-sujet" name="sujet">
+            <option>Analyse de données / DHIS2</option>
+            <option>Formation R pour mon équipe</option>
+            <option>Plateforme e-learning / tableau de bord</option>
+            <option>Note de politique / proposition de financement</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="Votre contexte et le problème à résoudre — deux lignes suffisent." required></textarea></div>
+        <button class="btn btn-primary" type="submit">Envoyer le message</button>
+        <p class="or-mail">Ou directement par e-mail : <a href="mailto:votre.email@exemple.org">votre.email@exemple.org</a></p>
+      </form>
     </div>
   </section>
 
 </main>
 
-<div class="weave" aria-hidden="true"></div>
 <footer>
-  <div class="wrap foot">
-    <span>© 2026 Dr Oumar — Épidémiologiste &amp; Data Scientist, Ouagadougou, Burkina Faso.</span>
-    <span class="mono">Données · Évidence · Décision</span>
+  <div class="wrap">
+    <div class="foot-grid foot">
+      <div>
+        <div class="foot-brand">Dr Oumar</div>
+        <p>Épidémiologiste &amp; analyste en santé publique — Ouagadougou, Burkina Faso. Des données plus fortes, pour des décisions plus justes.</p>
+      </div>
+      <div class="foot">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#travail">Ce que je fais</a></li>
+          <li><a href="#impact">Impact</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Domaines</h4>
+        <ul>
+          <li><a href="#travail">Analyse &amp; DHIS2</a></li>
+          <li><a href="#travail">Formations R</a></li>
+          <li><a href="#travail">E-learning &amp; tableaux de bord</a></li>
+          <li><a href="#travail">Politiques &amp; financement</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Réseaux</h4>
+        <ul>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">ORCID</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Dr Oumar. Tous droits réservés.</span>
+      <span>Données · Évidence · Décision</span>
+    </div>
   </div>
 </footer>
 
+<script>
+// Révélation au défilement
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// Compteurs animés
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const cio = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el = e.target, target = +el.dataset.count;
+    cio.unobserve(el);
+    if(reduce){ el.textContent = target; return; }
+    const t0 = performance.now(), dur = 1400;
+    const tick = (t)=>{
+      const p = Math.min((t-t0)/dur,1);
+      el.textContent = Math.round(target * (1-Math.pow(1-p,3)));
+      if(p<1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+},{threshold:.4});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+</script>
+
 </body>
 </html>
-
-  
